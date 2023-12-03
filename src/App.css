@@ -1,38 +1,96 @@
-.App {
-  text-align: center;
+.board {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 50%;
+  margin: 20px auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* added shadow for depth */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  padding: 10px 15px; /* space inside button around content */
+  border: none;
+  background-color: #007BFF;
+  color: #fff; /* text color */
+  border-radius: 5px; /* rounds corners of button */
+  cursor: pointer; /* changes cursor to pointer hand */
+  transition: background-color 0.3s; /* time to transition to new color when hovering over */
+  margin-top: 10px; /* add some space above the button */
+  margin-right: 2px; /* add some space to the right of the button */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button:hover {
+  background-color: #0056b3; /* color when I hover of the button */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Add styles for black and white pegs */
+.peg {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; /* makes it round */
+  margin: 0 5px;
+}
+
+.black-peg {
+  background-color: #000; /* black color */
+}
+
+.white-peg {
+  background-color: #fff; /* white color */
+  border: 1px solid #000; /* to distinguish white pegs from the background */
+}
+
+/* Add a style for the guess and feedback container */
+.guess-row {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: 10px 0; /* vertical spacing */
+}
+
+.guess {
+  font-weight: bold;
+}
+
+.pegs-container {
+  display: flex;
+  align-items: center;
+}
+
+.guess-input {
+  width: 100%; /* This will make it as wide as its parent container */
+  max-width: 600px; /* You can set a maximum width if you want */
+  /* Additional styling for the input box */
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin: 10px 0; /* Add some space around the input box */
+
+}
+
+.top-scores-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Adjust as needed */
+}
+
+.top-scores {
+  display: flex;
+  flex-wrap: wrap; /* This allows the items to wrap onto the next line */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 20px; /* Adjust the space between score items */
+  margin-bottom: 20px; /* Space above the guess input field */
+  max-width: calc(120px * 5); /* Assuming each score item has a width of 120px */
 }
 
-.App-link {
-  color: #61dafb;
+.score-item {
+  /* Additional styling for each score item */
+  flex: 0 1 auto; /* Flex-grow, Flex-shrink, Flex-basis */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.view-all-scores-button {
+  /* Button styling */
 }

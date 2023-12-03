@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './App.css';
+import Board from './Board';
+import Login from './Login';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [user, setUser] = useState(null);
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => { //listener to observe changes in auth state
+     //listener returns function stored in unsubscribe. will remove listener when called.
+      if (firebaseUser) {
+        // User is signed in, set the user in the state
+        setUser(firebaseUser);
+      } else {
+        // User is signed out, set the user in the state to null
+        setUser(null);
+      }
+    });
+
+    // Cleanup subscription on App unmount
+    return () => unsubscribe(); //removing listener
+  }, [auth]);
+
+
+    return (
+      <div>
+        {user ? <Board user={user} /> : <Login />} {/*if user is true, call books component. else call login */}
+      </div>
+    );
+  }
 
 export default App;
