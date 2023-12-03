@@ -1,5 +1,7 @@
 import React from 'react';
 
+//functional React component representing a single guess Row in the game Mastermind. Creates the arrays of
+//black and white pegs that are visually depicted on the row.
 function GuessRow({ guess, blackPegs, whitePegs }) {
 // Create arrays of black and white pegs based on the number passed in props
 //_ is placeholder for a parameter. Being used to fill the current element of the array with undefined.

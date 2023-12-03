@@ -61,7 +61,7 @@ button:hover {
 
 .guess-input {
   width: 100%; /* This will make it as wide as its parent container */
-  max-width: 600px; /* You can set a maximum width if you want */
+  max-width: 600px;
   /* Additional styling for the input box */
   padding: 10px;
   border: 2px solid #ddd;
@@ -74,7 +74,7 @@ button:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
 }
 
 .top-scores {
@@ -83,7 +83,7 @@ button:hover {
   justify-content: center;
   gap: 20px; /* Adjust the space between score items */
   margin-bottom: 20px; /* Space above the guess input field */
-  max-width: calc(120px * 5); /* Assuming each score item has a width of 120px */
+  max-width: calc(120px * 5); /* Each score item has a width of 120px */
 }
 
 .score-item {
