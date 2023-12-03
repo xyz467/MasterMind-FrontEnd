@@ -3,6 +3,18 @@ import GuessRow from './GuessRow';
 import axios from 'axios';
 import { getAuth, signOut } from 'firebase/auth';
 
+/*
+Mastermind game where user attempts to guess the secret 4 letter code generated in as few guesses as possible.
+The user will be first welcomed with a listing the top 5 scores in the data base, and will be prompted to enter
+a user name. Then the user will be able to guess. The user must submit a guess of 4 letters or will be prompted
+to change the guess. The user will receive feedback after each guess, where a black peg represents an exact
+match and a white peg represents a partial match. The user will continue guessing until he guesses the correct
+code. Each guess will cost the user a point, and a perfect score is 100. Once the user wins, the user will
+be prompted if he wants to save the game or not, if the user does, the gameRecord will be saved into the database.
+If the user scored in the top 5 scores, this will be reflected. The user can also view all of the user's scores
+and may also delete any of the user's scores.
+*/
+
 function Board({ user }) {
   const [guesses, setGuesses] = useState([]);
   const [feedback, setFeedback] = useState([]);
@@ -64,8 +76,10 @@ function displayUserGameRecords() {
 
   const [secretCode, setSecretCode] = useState(generateRandomCode()); //storing the secretCode in secretCode
 
-  //function to get feedback of the guess. 4 letter guess is the parameter. it will return an array of black and white pegs
-  //black pegs are for exact matches, white pegs are for partial matches
+  /*
+  function to get feedback of the guess. 4 letter guess is the parameter. it will return an array of black and white pegs
+  black pegs are for exact matches, white pegs are for partial matches
+  */
   const getFeedback = (guess) => {
     let blackPegs = 0;
     let whitePegs = 0;
@@ -140,8 +154,10 @@ function displayUserGameRecords() {
     setScore(100); // Reset the score
   };
 
-  //this function ensures that the user's guess is 4 characters, and makes the guess case insensitive.
-  //it checks if the user's guess was correct and sets the feedback of exact and partial matches from the user's guess
+  /*
+  this function ensures that the user's guess is 4 characters, and makes the guess case insensitive.
+  it checks if the user's guess was correct and sets the feedback of exact and partial matches from the user's guess
+  */
   const handleGuessSubmit = (event) => {
     event.preventDefault();
     if (currentGuess.length === 4) {
@@ -187,8 +203,10 @@ function displayUserGameRecords() {
     }
   };
 
-  //this function handles how to delete a score. it will delete the first score in the database that matches the
-  //score, date, and googleId that the user submitted. User will only have to input score and date.
+  /*
+  this function handles how to delete a score. it will delete the first score in the database that matches the
+  score, date, and googleId that the user submitted. User will only have to input score and date.
+  */
   const handleDeleteScore = async () => {
       try {
           console.log('Response:', deleteDate);
@@ -215,8 +233,10 @@ function displayUserGameRecords() {
     });
   };
 
-  //if a game is won, which is determined in handleGuessSubmit, then it will ask the user if the user wants to save the game
-  //if yes, the game will be saved as a gameRecord. Then the game will be reset and the user can play again.
+  /*
+  if a game is won, which is determined in handleGuessSubmit, then it will ask the user if the user wants to save the game
+  if yes, the game will be saved as a gameRecord. Then the game will be reset and the user can play again.
+  */
   useEffect(() => {
     if (gameWon) {
       const saveGameChoice = window.confirm("Congratulations! You won! Do you want to save your game?");

@@ -22,8 +22,10 @@ const app = initializeApp(firebaseConfig); //instance of the firebase app
 const auth = getAuth(app); //authentication instance used to manage user authentication
 
 
-//user can complete an authenticated login via firebase by signing in with google. This will set the userId
-//to user.uid(a firebase uid).
+/*
+user can complete an authenticated login via firebase by signing in with google. This will set the userId
+to user.uid(a firebase uid).
+*/
 function LoginApp() {
   const [userId, setUserId] = useState('');
 

@@ -5,8 +5,10 @@ import Board from './Board';
 import Login from './Login';
 
 
-//starting point of Project. Checks to make sure a firebaseUser is logged in before playing. If no user is logged in
-//then the user will be sent to the Login page
+/*
+starting point of Project. Checks to make sure a firebaseUser is logged in before playing. If no user is logged in
+then the user will be sent to the Login page
+*/
 function App() {
   const [user, setUser] = useState(null);
   const auth = getAuth();
